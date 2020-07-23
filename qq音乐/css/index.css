@@ -1,0 +1,451 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.header{
+    width: 100%;
+    height: 142px;
+    background-color: white;
+}
+.inwrapper{
+    width: 1200px;
+    margin: 0 auto;
+}
+.inwrapper-top{
+    width: 1200px;
+    height: 89px;
+    background-color: white;
+    border-bottom: 1px solid #F2F2F2;
+    display: flex;
+}
+/* logo */
+.logo{
+    width: 170px;
+    height: 46px;
+    margin-top: 23px;
+    margin-right: 20px;
+}
+.logo a{
+    display: block;
+    
+}
+/* sort */
+.sort{
+    display: flex;
+    height: 89px;
+    width: 480px;
+    line-height: 89px;
+    text-align: center;
+}
+.sort li{
+    flex:1;
+}
+.sort img{
+    width: 37px;
+    height: 14px;    
+}
+.sort .tips{
+    position: relative;
+}
+.sort div{
+    position: absolute;
+    top: -15px;
+    right: 0;
+}
+.sort a{
+    display: block;
+    font-size: 18px;
+    color: black;
+}
+.sort .hov{
+    background-color: #31C27C;
+    color: white;
+}
+.sort a:not(.hov):hover{
+    color: #31C27C;
+}
+
+/* search */
+.search{
+    height: 89px;
+    
+    background-color: white;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search .wrapper{
+    width: 225px;
+    height: 40px;
+    border: 1px solid #C9C9C9;
+    border-radius: 3px;
+
+}
+.search input{
+    
+    padding-left: 10px;
+    border: none;
+    width: 174px;
+    height: 36px;
+    font-size: 14px;
+    outline: none;
+}
+.search button{
+    border: none;
+    height: 35px;
+    width: 38px;
+    background-color: white;
+    
+}
+.search i{
+    padding-top: 6px;
+    height: 16px;
+    width: 16px;
+    font-size: 18px;
+    color: #808080;
+}
+.wrapper a{
+    display: inline-block;
+}
+.wrapper button:hover i{
+    color:#31C27C;
+}
+/* user-info */
+.user-info{
+    height: 89px;
+    display: inline-flex;
+    align-items: center;
+}
+.user-info a{
+    margin-left: 13px;
+    
+}
+.login{
+    color:black;
+}
+.user-info .login:hover{
+    color: #31C27C;
+}
+.buya,.buyb{
+    display: block;
+    height: 38px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    
+}
+.buya{
+    background-color: #31C27C;
+    
+    border: 1px solid #31C27C;
+    border-radius: 3px;
+    font-size: 13px;
+    color: white;
+}
+.buya:hover{
+    background-color: #2CAF6F;
+}
+.buyb{
+    color: black;
+    border: 1px solid #C9C9C9;
+    border-radius: 3px;
+    font-size: 13px;
+}
+.buyb:hover{
+    background-color: #EDEDED;
+}
+
+.inwrapper-bottom{
+    
+    width: 1200px;
+    height: 52px;
+    background-color: white;
+    line-height: 52px;
+    
+}
+.inwrapper-bottom ul{
+    padding: 0 200px;
+    display: flex;
+}
+.inwrapper-bottom li{
+    flex:auto;
+    text-align: center;
+}
+.inwrapper-bottom a{
+    font-size: 15px;
+}
+.hov2{
+    color: #31C27C;
+}
+.inwrapper-bottom a:not(.hov2):hover{
+    color: #31C27C;
+}
+
+/* 内容区1 */
+/* 整体规划 */
+.container1{
+    width: 100%;
+    height: 532px;
+    background-image: linear-gradient(#F2F2F2,#FAFAFA);
+}
+.contain-wrapper{
+    width: 1200px;
+    height:532px;
+    margin: 0 auto;
+    background-color: transparent;
+}
+/* 上部设置 */
+/* 标题栏：歌单推荐 */
+.title div{
+    height: 100px;
+    line-height: 114px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 560;
+    background-color: transparent;
+}
+/* 分类栏 */
+.mic-sort{
+    display: flex;
+    height: 64px;
+    padding: 0px 300px;
+    background-color: transparent;
+}
+.mic-sort li{
+    flex: 1;
+    text-align: center;
+    height: 50px;
+    font-size: 15px;
+    line-height: 50px;
+}
+.mic-sort a:not(#sort-hov):hover{
+    color: #38C481;
+}
+/* 中部模组展示 */
+.mod{
+
+    display: flex;
+}
+.mod>div{
+    width: 244px;
+    height: 310px;
+}
+.mod img{
+    width: 224px;
+    height: 224px;
+    transition: all 0.3s;
+}    
+.mod .picture{
+    position: relative;
+    overflow: hidden;
+}
+.mod i{
+    position: absolute;
+    top: -125px;
+    left: 85px;
+    color: #EDEDED;
+    font-size: 60px;
+    z-index: -9999;
+    transition: all 0.3s;
+    
+}
+.picture:hover>i{
+    z-index: 9999;
+    
+}
+.outbar{
+    width: 224px;
+    height: 224px;
+    overflow: hidden;
+} 
+.picture:hover >img{
+    transform: scale(1.1);
+    filter: brightness(75%);
+    
+}
+.mod .discribe{
+    font-size: 14px;
+    margin: 10px 0px 5px;
+}
+.mod .discribe:hover>a{
+    color: #38C481;
+}
+.mod .number{
+    color: #999;
+    font-size: 14px;
+}
+/*下部 */
+.icon{
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    display: flex;
+    justify-content: center;
+    font-size:1px;
+}
+.icon i{
+    margin-right: 20px;
+    color: #E1E1E1;
+}
+.icon i:hover{
+    color:#AFAFAF;
+}
+/* 下载悬浮框 */
+.download{
+    width: 144px;
+    padding: 18px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 0 1px rgba(0,0,0, 0.3);
+    border-radius: 5px;
+    position: fixed;
+    top: 170px;
+    left: 1300px;
+    z-index: 9999;
+}
+.logo-qqmic img{
+    width: 100px;
+    height: 27.6px;
+}
+.download span{
+    display: block;
+    width: 100%;
+    height: 10px;
+    line-height: 10px;
+    margin: 10px 0 15px;
+    font-size: 15px;
+    color: #a6a6a6;
+}
+.download-link{
+    margin:0 auto;
+    width: 120px;
+    height: 25px;
+    background-color: #38C481;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 25px;
+}
+.download-link>a{
+    color: white;
+    font-weight: 300px;
+}
+
+/* 内容2 */
+/* 头部 */
+.container2{
+    width: 100%;
+    height: 580px;
+    background-image: linear-gradient(#F2F2F2,#FAFAFA);
+}
+.contain-wrapper{
+    width: 1200px;
+    height: 580px;
+}
+.title2{
+    position: relative;
+}
+.title2 .play{
+    width: 123px;
+    height: 38px;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    border: 1px solid #C9C9C9;
+    border-radius: 2px;
+    background-color: transparent;
+}
+.play a{
+    display:flex;
+    width: 115px;
+    height: 38px;
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 350;
+}
+.play i{
+    color: #999999;
+    padding-right: 8px;
+}
+.play:hover{
+    background-color: #EDEDED;
+}
+/* 中部 */
+.last-wrapper{
+    width: 1200px;
+    height: 333px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+.shell{
+    width: 400px;
+    height: 111px;
+    position: relative;
+}
+.cd-picture{
+    position: relative;
+    overflow: hidden;
+    width: 90px;
+    height: 90px;
+}
+.cd-picture img{
+    transition: all 0.3s;
+}
+.cd-picture i{
+    position: absolute;
+    top: 25px;
+    left: 28px;
+    font-size: 40px;
+    color: #EDEDED;
+    z-index: -9999;
+    transition: all 0.3s;
+}
+.cd-picture:hover img{
+    transform: scale(1.1);
+    filter: brightness(75%);
+
+}
+.cd-picture:hover i{
+    z-index: 9999;
+}
+.name{
+    position: absolute;
+    top: 10px;
+    left: 117px;
+}
+.name a{
+    font-size: 14px;
+
+}
+.single{
+    position:absolute;
+    top: 35px;
+    left: 118px;
+    
+
+}
+.single a{
+    font-size: 14px;
+    color: #999;
+}
+.time{
+    position: absolute;
+    top: 35px;
+    left: 315px;
+    font-size: 14px;
+    color: #999;
+}
+.name:hover>a{
+    color: #38C481;
+}
+.single:hover>a{
+    color: #38C481;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>颜色选择器</title>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    #pick_area{
+        float: left;
+    }
+    .color_info{
+        float: left;
+        width: 300px;
+        height: 200px;
+        margin-top: 100px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    .color_show{
+        width: 200px;
+        height: 150px;
+        background-color: #00f;
+    }
+</style>
+<body>
+    <canvas id="pick_area" width="500px" height="500px">颜色画布</canvas>
+    <div class="color_info">
+        <p>选中的颜色属性:</p>
+        <div class="color_show"></div>
+        <div class="text_info">rgb:</div>
+    </div>
+</body>
+<script>
+    //获取需要操作的节点
+    var pa = document.getElementById("pick_area");
+    var cs = document.getElementsByClassName("color_show");
+    var ti = document.getElementsByClassName("text_info");
+    var ctx = pa.getContext('2d');
+
+    //绘制画布
+    //绘制左侧colorbar
+    var gra1 = ctx.createLinearGradient(0,0,0,300);
+    gra1.addColorStop(0, '#00f');
+    gra1.addColorStop(1 / 6, '#0ff');
+    gra1.addColorStop(2 / 6, '#0f0');
+    gra1.addColorStop(3 / 6, '#ff0');
+    gra1.addColorStop(4 / 6, '#f00');
+    gra1.addColorStop(5 / 6, '#f0f');
+    gra1.addColorStop(6 / 6, '#00f');
+    ctx.fillStyle = gra1;
+    ctx.fillRect(30, 0, 20 , 300);
+
+    //绘制中间主颜色区
+    function picker_left(color) {
+      var gra2 = ctx.createLinearGradient(80,0,380,0);
+      gra2.addColorStop(0,'rgba(255,255,255,1)')
+      gra2.addColorStop(1,color);
+      ctx.fillStyle = gra2;
+      ctx.fillRect(80,0,300,300);
+
+      var gra2 = ctx.createLinearGradient(0,0,0,300);
+      gra2.addColorStop(0,'rgba(0,0,0,0)')
+      gra2.addColorStop(1,'rgba(0,0,0,1)');
+      ctx.fillStyle = gra2;
+      ctx.fillRect(80,0,300,300);
+    }
+    picker_left('#00f');
+    
+    //绑定点击事件
+    pa.addEventListener("click",(event)=>{
+        var x = event.offsetX;
+        var y = event.offsetY;
+        
+        if(x>=30 && x<=50 && y>=0 && y<=300) {
+            var color_data = ctx.getImageData(x,y,1,1);
+            color_data.data[3] = color_data.data[3]/255;
+            var color = `rgba(${color_data.data[0]},${color_data.data[1]},${color_data.data[2]},${color_data.data[3]})`;
+            picker_left(color);
+        }
+
+        if(x>=80 && x<=380 && y>=0 && y<=300) {
+            var color_data = ctx.getImageData(x,y,1,1);
+            color_data.data[3] = color_data.data[3]/255;
+            var color = `rgba(${color_data.data[0]},${color_data.data[1]},${color_data.data[2]},${color_data.data[3]})`;
+            cs[0].style.backgroundColor = color;
+            ti[0].innerHTML = `rgb(${color_data.data[0]},${color_data.data[1]},${color_data.data[2]})`;
+        }
+    })
+</script>
+</html>

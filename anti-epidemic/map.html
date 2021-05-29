@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国新冠疫情实时数据地图</title>
+    <link rel="stylesheet" href="css/echarts.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <!-- 引入 echarts.js -->
+    <script src="https://cdn.bootcss.com/echarts/3.7.1/echarts.min.js"></script>
+    <!--引入中国的地图数据js文件，引入后会自动注册地图名字和数据-->
+    <script src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js?_v_=1598903772045"></script>
+
+</head>
+
+<body>
+    <div id="particles-js" class="diy-bg">
+        <canvas class="particles-js-canvas-el"></canvas>
+
+        <div class="echart">
+            <div id="main"></div>
+        </div>
+    </div>
+
+    <!-- 背景JS -->
+    <script src="js/particles.min.js"></script>
+    <script src="js/particles_deploy.js"></script>
+    <!-- MapJS -->
+    <script>
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        var provinces = ["北京", "天津", "上海", "重庆", "新疆", "西藏", "宁夏", "内蒙古",
+            "广西", "黑龙江", "吉林", "辽宁", "河北", "山东", "江苏", "安徽",
+            "浙江", "福建", "广东", "海南", "云南", "贵州", "四川", "湖南",
+            "湖北", "河南", "山西", "陕西", "甘肃", "青海", "江西", "台湾", "香港", "澳门"]
+        // 指定图表的配置项和数据
+        var option = {
+            //标题
+            title: {
+                text: '中国新冠疫情实时数据地图',
+                left: "center",
+                textStyle: {
+                    fontSize: 24,
+                    fontWeight: 'normal',
+                    color: '#fff',
+                    textBorderColor: '#2584F0',
+                },
+            },
+            //显示提示框
+            tooltip: {
+                trigger: 'item',
+                formatter: function (params) {
+                    //定义一个res变量来保存最终返回的字符结果,并且先把地区名称放到里面
+                    var res = params.name + '<br />';
+                    //定义一个变量来保存series数据系列
+                    var myseries = option.series;
+                    //循环遍历series数据系列
+                    for (var i = 0; i < myseries.length; i++) {
+                        //在内部继续循环series[i],从data中判断：当地区名称等于params.name的时候就将当前数据和名称添加到res中供显示
+                        for (var k = 0; k < myseries[i].data.length; k++) {
+                            //console.log(myseries[i].data[k].name);
+                            //如果data数据中的name和地区名称一样
+                            if (myseries[i].data[k].name == params.name) {
+                                //将series数据系列每一项中的name和数据系列中当前地区的数据添加到res中
+                                res += "● "+ myseries[i].name + ':' + myseries[i].data[k].value + '<br />';
+                            }
+                        }
+                    }
+                    //返回res
+                    //console.log(res);
+                    return res;
+                },
+
+            },
+
+            //视觉映射
+            visualMap: {
+                type: 'piecewise',
+                textStyle: {
+                    color: '#fff',
+                },
+                pieces: [
+                    { value:0,label:'现存确诊0人',color: '#FFF'},
+                    { min: 20, label: '现存确诊大于等于20人', color: '#095DD7' },
+                    { min: 10, max: 20, label: '现存确诊10-20人', color: '#1B71DE' },
+                    { min: 5, max: 10, label: '现存确诊5-10人', color: '#3691E7' },
+                    { min: 3, max: 5, label: '现存确诊3-5人', color: '#6CCCF8' },
+                    { min: 1, max: 3, label: '现存确诊1-3人', color: '#94E6FA' },
+                ]
+            },
+            //工具栏
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                left: 'right',
+                top: 'center',
+                itemSize: 24,
+                itemGap: 50,
+                iconStyle: {
+                    normal: {
+                        borderColor: '#2584F0',
+                        borderWidth: '2',
+                    }
+                },
+                feature: {
+                    mark: { show: true },
+                    dataView: { show: true, readOnly: false },
+                    restore: { show: true },
+                    saveAsImage: { show: true },
+                },
+            },
+            roamController: {
+                show: true,
+                left: 'right',
+                mapTypeControl: {
+                    'china': true
+                }
+            },
+
+            //地图数据
+            series: [
+                {
+                    name: '现存确诊人数',
+                    type: 'map',
+                    mapType: 'china',
+                    roam: false,
+                    label: {
+                        show: true,
+                        color: 'rgb(249, 249, 249)'
+                    },
+                    data: [
+                    ]
+                },
+                {
+                    name: '累计确诊人数',
+                    type: 'map',
+                    mapType: 'china',
+                    roam: false,
+                    label: {
+                        show: true,
+                        color: 'rgb(249, 249, 249)'
+                    },
+                    data: [
+                    ]
+                },
+                {
+                    name: '治愈人数',
+                    type: 'map',
+                    mapType: 'china',
+                    roam: false,
+                    label: {
+                        show: true,
+                        color: 'rgb(249, 249, 249)'
+                    },
+                    data: [
+                    ]
+                },
+                {
+                    name: '死亡人数',
+                    type: 'map',
+                    mapType: 'china',
+                    roam: false,
+                    label: {
+                        show: true,
+                        color: 'rgb(249, 249, 249)'
+                    },
+                    data: [
+                    ]
+                },
+
+            ]
+
+        };
+        var arrayObj1 = new Array([34]);
+        var arrayObj2 = new Array([34]);
+        var arrayObj3 = new Array([34]);
+        var arrayObj4 = new Array([34]);
+
+        for (var n = 0; n < 34; n++) {
+            var url = 'https://api.inews.qq.com/newsqa/v1/query/pubished/daily/list?province=' + provinces[n];
+
+
+            $.ajax({
+                type: 'get',
+                url: this.url,
+                dataType: 'json',
+                async: false,
+                success: function (res) {
+                    var res = res.data;
+                    res = res[res.length - 1];
+                    var newData1 = new Object();
+                    var newData2 = new Object();
+                    var newData3 = new Object();
+                    var newData4 = new Object();
+
+                    newData2.name = res.province;
+                    newData2.value = res.confirm;
+                    newData3.name = res.province;
+                    newData3.value = res.heal;
+                    newData4.name = res.province;
+                    newData4.value = res.dead;
+                    newData1.name = res.province;
+                    newData1.value = newData2.value - newData3.value - newData4.value;
+                    // console.log(newData1);
+                    arrayObj1.push(newData1);
+
+                },
+
+            }),
+            $.ajax({
+                type: 'get',
+                url: this.url,
+                dataType: 'json',
+                success: function (res) {
+                    var res = res.data;
+                    res = res[res.length - 1];
+                    var newData1 = new Object();
+                    var newData2 = new Object();
+                    var newData3 = new Object();
+                    var newData4 = new Object();
+
+                    newData2.name = res.province;
+                    newData2.value = res.confirm;
+                    newData3.name = res.province;
+                    newData3.value = res.heal;
+                    newData4.name = res.province;
+                    newData4.value = res.dead;
+
+                    arrayObj2.push(newData2);
+                    arrayObj3.push(newData3);
+                    arrayObj4.push(newData4);
+                },
+
+            })
+        }
+
+        option.series[0].data = arrayObj1;
+        option.series[1].data = arrayObj2;
+        option.series[2].data = arrayObj3;
+        option.series[3].data = arrayObj4;
+        myChart.setOption(option);
+
+
+
+
+
+    </script>
+</body>
+
+</html>

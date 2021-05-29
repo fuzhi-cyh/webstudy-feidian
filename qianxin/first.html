@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抗疫大作战</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .bgc_img{
+            position:fixed;
+            top: 0;
+            left: 0;
+            width:100%;
+            height:100%;
+            background: url(images/bgc_img.png) no-repeat;
+            background-size: cover;
+            background-position: center top;
+            z-index:-1000;
+        }
+        .enterGame{
+            width: 300px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-150px);
+            bottom: 10%;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            border: 1px solid skyblue;
+            border-radius: 10px;
+            padding: 10px 0px;
+            box-shadow: 0 0 40px rgb(0, 183, 255);
+        }
+        .enterGame:hover{
+            background-color: rgb(0, 80, 112);
+        }
+    </style>
+</head>
+<body>
+    <div class="bgc_img"></div>
+    <div class="enterGame">进入游戏界面</div>
+    <script>
+        let enterGame = document.querySelector(".enterGame");
+        enterGame.onclick = function(){
+            window.location.href="index.html";
+        }
+    </script>
+</body>
+</html>

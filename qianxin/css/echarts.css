@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    height: 99%;
+    background-color: #0B090E;
+}
+.diy-bg{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+}
+.echart{
+    width: 1000px;
+    height: 550px;
+    background-color: #262728;
+    padding: 20px 50px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+    animation: bbt 3s;
+    animation-iteration-count: infinite;
+}
+#main{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    color: #fff;
+}
+
+@keyframes bbt{
+    0%,100%{
+        box-shadow: none;
+    }
+    50%{
+        box-shadow: 0 0 40px 0 rgb(37, 132, 240);
+    }
+}
